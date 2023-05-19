@@ -2,6 +2,7 @@ const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     entry: {
@@ -21,6 +22,7 @@ module.exports = {
             filename: '[name].css'
         }),
         new CssMinimizerPlugin(),
+        new VueLoaderPlugin(),
         
     ],
     module: {
@@ -29,8 +31,7 @@ module.exports = {
             test: /\.css$/,
             use: [
               MiniCssExtractPlugin.loader,
-              'css-loader',
-              'style-loader'
+              'css-loader'
             ]
         },
         {
@@ -45,11 +46,18 @@ module.exports = {
                 }
             ]
         },
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }
       ]
     },
     optimization: {
         minimizer: [new CssMinimizerPlugin(),],
     },
-    
+    resolve: {
+        extensions: ['.js', '.vue', '.json']
+    },
+      
 
 };

@@ -1,11 +1,20 @@
 <template>
-  <div>
-    <header id="header">
-      <h1>Inicio</h1>
+  <div id="contenedor">
+    <header id="elHeader">
       <div id="links">
-        <router-link class="link" to="/login">Ir a Login</router-link>
-        <router-link class="link" to="/register">Ir a Register</router-link>
-        <router-link class="link" to="/reservas">Ir a Reservas</router-link>
+        <h1>
+          <router-link class="link" to="/">TableTrek</router-link>
+        </h1>
+        <div id="routers">
+          <router-link class="link" to="/pizzas">Pizzas</router-link>
+          <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
+          <router-link class="link" to="/sushi">Sushi</router-link>
+        </div>
+      </div>
+      <div id="prueba">
+        <button id="loginButton">
+          <img src="./assets/img/login.png" id="login" />
+        </button>
       </div>
     </header>
     <router-view></router-view>
@@ -13,17 +22,23 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from 'vue-router';
+import Login from './assets/vectores/login.svg';
+const router = useRouter();
 </script>
 
 <style >
-header {
+#contenedor{
+  width: 100%;
+  background-color: black;
+}
+
+#elHeader {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  background-color: black;
+  width: 95%;
+  background-color: rgb(20, 19, 19);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -37,8 +52,44 @@ header {
   margin-right: 70px;
 }
 
+#routers{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-left: 25px;
+}
+
 .link {
   color: white;
   text-decoration: none;
 }
+
+.link:hover{
+  cursor: pointer;
+}
+
+#login{
+  width: 35px;
+  height: 35px;
+  margin-right: 50px;
+}
+
+#loginButton{
+  background-color: transparent;
+  border: none;
+  width: 36px;
+  display: flex;
+  align-items: center;
+}
+
+#loginButton:hover{
+  width: 36px;
+  cursor: pointer;
+}
+
+#prueba{
+  width: 35px;
+  margin-right: 25px;
+}
+
 </style>

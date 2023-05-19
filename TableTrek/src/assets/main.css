@@ -1,5 +1,14 @@
-@import './base.css';
+/*@import './base.css';*/
+@font-face {
+  font-family: 'Royalacid_o';
+  src: url('./fonts/Royalacid.ttf') format("truetype");
+}
 
+#app {
+  font-family: 'Royalacid_o';
+}
+
+/*
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -33,3 +42,4 @@ a,
     padding: 0 2rem;
   }
 }
+*/
