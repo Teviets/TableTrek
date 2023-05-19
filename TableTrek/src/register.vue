@@ -1,13 +1,10 @@
 <template>
-    <!-- Contenido del template aquí -->
-  </template>
-  
-  <script>
-  
-  </script>
-  
-  <!-- Estilos opcionales -->
-  <style>
-  /* Estilos del componente aquí */
-  </style>
-  
+  <div>
+    <p>Aqui esta Register</p>
+  </div>
+</template>
+
+<script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+</script>

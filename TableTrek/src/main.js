@@ -9,7 +9,6 @@ import Reservas from './reservas.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: App },
         { path: '/login', component: Login },
         { path: '/register', component: Register },
         { path: '/reservas', component: Reservas },
