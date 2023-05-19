@@ -12,9 +12,7 @@
         </div>
       </div>
       <div id="prueba">
-        <button id="loginButton">
-          <img src="./assets/img/login.png" id="login" />
-        </button>
+        <Login/>
       </div>
     </header>
     <router-view></router-view>
@@ -23,7 +21,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import Login from './assets/vectores/login.svg';
+import Login from './components/login.vue';
 const router = useRouter();
 </script>
 
@@ -37,7 +35,8 @@ const router = useRouter();
   position: absolute;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 100%;
+  height: 70px;
   background-color: rgb(20, 19, 19);
   color: white;
   display: flex;
@@ -66,12 +65,6 @@ const router = useRouter();
 
 .link:hover{
   cursor: pointer;
-}
-
-#login{
-  width: 35px;
-  height: 35px;
-  margin-right: 50px;
 }
 
 #loginButton{
