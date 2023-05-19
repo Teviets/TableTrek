@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>Aqui esta Reserva</p>
+  <div id="contenido">
+    <p>Aqui esta Reservas</p>
   </div>
 </template>
 
@@ -8,3 +8,10 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 </script>
+
+<style>
+#contenido {
+  position: absolute;
+  top: 50%;
+}
+</style>
