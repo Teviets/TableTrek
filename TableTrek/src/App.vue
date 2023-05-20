@@ -19,16 +19,20 @@
     </header>
     <router-view></router-view>
   </div>
+  <div id="cardsContainer">
+    <Cards />
+  </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
-import Login from './assets/vectores/login.svg';
+import Cards from './components/Cards.vue'
 const router = useRouter();
+
 </script>
 
 <style >
-#contenedor{
+#contenedor {
   width: 100%;
   background-color: black;
 }
@@ -37,7 +41,8 @@ const router = useRouter();
   position: absolute;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 100%;
+  height: 70px;
   background-color: rgb(20, 19, 19);
   color: white;
   display: flex;
@@ -52,7 +57,7 @@ const router = useRouter();
   margin-right: 70px;
 }
 
-#routers{
+#routers {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -64,17 +69,17 @@ const router = useRouter();
   text-decoration: none;
 }
 
-.link:hover{
+.link:hover {
   cursor: pointer;
 }
 
-#login{
+#login {
   width: 35px;
   height: 35px;
   margin-right: 50px;
 }
 
-#loginButton{
+#loginButton {
   background-color: transparent;
   border: none;
   width: 36px;
@@ -82,14 +87,21 @@ const router = useRouter();
   align-items: center;
 }
 
-#loginButton:hover{
+#loginButton:hover {
   width: 36px;
   cursor: pointer;
 }
 
-#prueba{
+#prueba {
   width: 35px;
   margin-right: 25px;
 }
 
+#cardsContainer {
+  position: relative;
+  margin-top: 21%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
