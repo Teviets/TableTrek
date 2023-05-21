@@ -4,21 +4,21 @@
             <v-row>
                 <v-col cols="6">
                     <v-img cover width="100%" height="280px"
-                        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
+                        :src="image"></v-img>
                 </v-col>
 
                 <v-col cols="6">
                     <v-card-item>
-                        <v-card-title style="font-size: 30px;">Cafe Badilico</v-card-title>
+                        <v-card-title style="font-size: 30px;">{{ title }}</v-card-title>
                     </v-card-item>
 
                     <v-card-text>
                         <div class="my-4 text-subtitle-1" style="margin-top: 0px!important;">
-                            $ • Italian, Cafe
+                            $ • {{ categoria }}
                         </div>
 
                         <div>
-                            Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.
+                            {{ description }}
                         </div>
                     </v-card-text>
 
@@ -27,8 +27,8 @@
                     <v-card-title style="display: flex; align-items: center;">
                         Tonight's availability:
                         <v-chip-group v-model="selection" style="margin-left: 8px;">
-                            <v-chip>5:30AM</v-chip>
-                            <v-chip>7:30PM</v-chip>
+                            <v-chip>{{ apertura }}</v-chip>
+                            <v-chip>{{ cerrada }}</v-chip>
                         </v-chip-group>
                     </v-card-title>
 
@@ -83,6 +83,14 @@ export default {
     data: () => ({
         show: false,
     }),
+    props: {
+        title: String,
+        categoria: String,
+        description: String,
+        apertura: String,
+        cerrada: String,
+        image: String,
+    },
 }
 </script>
 
