@@ -5,14 +5,15 @@
         <h1>
           <router-link class="link" to="/">TableTrek</router-link>
         </h1>
-        <div id="routers">
+        <div id="routers" v-if="!isLogged">
           <router-link class="link" to="/pizzas">Pizzas</router-link>
           <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
           <router-link class="link" to="/sushi">Sushi</router-link>
         </div>
       </div>
       <div id="prueba">
-        <Login/>
+        <Login ref="isLogged"/>
+        <Register/>
       </div>
     </header>
     <router-view></router-view>
@@ -22,7 +23,11 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import Login from './components/login.vue';
+import Register from './components/register.vue';
 const router = useRouter();
+
+
+
 </script>
 
 <style >
@@ -80,9 +85,14 @@ const router = useRouter();
   cursor: pointer;
 }
 
-#prueba{
-  width: 35px;
+#prueba {
+  width: auto;
   margin-right: 25px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-direction: row-reverse; /* Agregado para mostrar los componentes en una columna */
 }
+
 
 </style>

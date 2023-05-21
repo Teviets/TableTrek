@@ -17,56 +17,110 @@
         <v-card-title>
           <span class="text-h5">Login</span>
         </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-col cols="12">
-              <v-text-field
-                label="Usuario"
-                prepend-icon="mdi-account-circle"
-                required
-              ></v-text-field>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                label="Password"
-                prepend-icon="mdi-lock"
-                type="password"
-                required
-              ></v-text-field>
-            </v-col>
-          </v-container>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="blue-darken-1"
-            variant="text"
-            @click="dialog = false"
-          >
-            Cerrar
-          </v-btn>
-          <v-btn
-            color="blue-darken-1"
-            variant="text"
-            @click="dialog = false"
-          >
-            Login
-          </v-btn>
-        </v-card-actions>
+        <v-form
+          v-model="form"
+          @submit.prevent="login"
+        >
+          <v-card-text>
+            <v-container>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="email"
+                  label="Usuario"
+                  prepend-icon="mdi-account-circle"
+                  :rules="[required]"
+                  :readonly="loading"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="password"
+                  label="Password"
+                  prepend-icon="mdi-lock"
+                  type="password"
+                  :rules="[required]"
+                  :readonly="loading"
+                  required
+                ></v-text-field>
+              </v-col>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="blue-darken-1"
+              variant="text"
+              @click="dialog = false"
+            >
+              Cerrar
+            </v-btn>
+            <v-btn
+              :disabled="!form"
+              :loading="loading"
+              color="blue-darken-1"
+              variant="text"
+              type="submit"
+            >
+              Login
+            </v-btn>
+          </v-card-actions>
+        </v-form>
       </v-card>
     </v-dialog>
   </v-row>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        dialog: false,
+import { ref } from 'vue';
+export default {
+  data () {
+    return {
+      dialog: false,
+      form: false,
+      loading: false,
+      isLoading: false,
+      email: '',
+      password: '',
+      timeout: null,
+      isLogged: false,
+    }
+  },
+  methods: {
+    login () {
+      if (!this.form) return
+
+      this.loading = true
+      
+      // Comparar el valor del campo de texto con un texto específico
+      if (this.email === 'usuario' && this.password === 'contraseña') {
+        // Lógica para el login exitoso
+        this.isLogged = true;
+        console.log('Login exitoso');
+        this.
+        this.timeout = setTimeout(() => {
+          this.loading = false;
+          this.dialog = false;
+        }, 2000);
+      } else {
+        // Lógica para el login fallido
+        console.log('Login fallido');
+        this.timeout = setTimeout(() => {
+          this.loading = false;
+          this.dialog = false;
+        }, 2000);
       }
     },
-  }
+    required (v) {
+      return !!v || 'Field is required'
+    },
+  },
+  beforeDestroy() {
+    clearTimeout(this.timeout); // Cancelar el temporizador antes de destruir el componente
+  },
+}
 </script>
+
 <style>
 #login{
   width: 35px;
@@ -78,6 +132,4 @@
   background-color: black; /* Cambia los valores RGB y el nivel de transparencia según tus necesidades */
   border: none; /* Elimina el borde si no lo necesitas */
 }
-
-
 </style>
