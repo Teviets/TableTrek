@@ -7,6 +7,7 @@ import App from './App.vue';
 import Pizzas from './pizzas.vue';
 import Hamburguesas from './hamburguesas.vue';
 import Sushi from './sushi.vue';
+import Reservas from './reservas.vue';
 
 // Importa Vuetify y su CSS
 import { createVuetify } from 'vuetify';
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: '/pizzas', component: Pizzas },
     { path: '/hamburguesas', component: Hamburguesas },
     { path: '/sushi', component: Sushi },
+    { path: '/reservas', redirect: Reservas }
   ]
 });
 

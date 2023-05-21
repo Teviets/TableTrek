@@ -3,13 +3,16 @@
     <header id="elHeader">
       <div id="links">
         <h1>
-          <router-link class="link" to="/">TableTrek</router-link>
+          TableTrek
         </h1>
-        <div id="routers" v-if="!inLogin">
+        <div class="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas">Pizzas</router-link>
           <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
           <router-link class="link" to="/sushi">Sushi</router-link>
         </div> 
+        <div class="routers" v-if="inLogin">
+          <router-link class="link" to="/reservas">Reservas</router-link>
+        </div>
       </div>
       <div id="prueba" v-if="!inLogin">
         <Login @login="login"/>
@@ -87,7 +90,7 @@ export default {
   margin-right: 70px;
 }
 
-#routers{
+.routers{
   display: flex;
   gap: 20px;
   align-items: center;
