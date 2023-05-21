@@ -9,6 +9,7 @@
     "webpack": "webpack --watch"
   },
   "dependencies": {
+    "@mdi/font": "^7.2.96",
     "@vue/cli": "^5.0.8",
     "core-js": "^3.30.2",
     "css-loader": "^6.7.3",

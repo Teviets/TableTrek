@@ -22,6 +22,12 @@
   <div id="cardsContainer">
     <Cards />
   </div>
+  <div id="cardsContainer">
+    <Cards />
+  </div>
+  <div id="cardsContainer">
+    <Cards />
+  </div>
 </template>
 
 <script setup>
@@ -99,7 +105,16 @@ const router = useRouter();
 
 #cardsContainer {
   position: relative;
-  margin-top: 21%;
+  margin-top: 18%;
+  margin-bottom: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#cardsContainer2 {
+  position: relative;
+  margin-top: 23%;
   display: flex;
   justify-content: center;
   align-items: center;

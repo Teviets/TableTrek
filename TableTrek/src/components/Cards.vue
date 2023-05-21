@@ -1,9 +1,9 @@
 <template>
     <div>
-        <v-card class="mx-auto my-12" id="contenedorCards" width="1000px">
+        <v-card class="mx-auto my-12" id="contenedorCards" width="1000px" height=auto>
             <v-row>
                 <v-col cols="6">
-                    <v-img cover width="100%" height="100%"
+                    <v-img cover width="100%" height="280px"
                         src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
                 </v-col>
 
@@ -24,32 +24,44 @@
 
                     <v-divider class="mx-4 mb-1"></v-divider>
 
-                    <v-card-title>Tonight's availability</v-card-title>
-
-                    <div class="px-4">
-                        <v-chip-group v-model="selection">
-                            <v-chip>5:30PM</v-chip>
+                    <v-card-title style="display: flex; align-items: center;">
+                        Tonight's availability:
+                        <v-chip-group v-model="selection" style="margin-left: 8px;">
+                            <v-chip>5:30AM</v-chip>
                             <v-chip>7:30PM</v-chip>
                         </v-chip-group>
-                    </div>
+                    </v-card-title>
 
                     <v-card-actions>
-                        <v-btn color="black" variant="text">
-                            Reserve
-                        </v-btn>
+                        <v-card-item>
+                            <v-card-title>Reserve</v-card-title>
+                        </v-card-item>
                         <v-spacer></v-spacer>
-                        <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
+                        <v-btn @click="show = !show">
+                            <v-icon>
+                                {{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
+                            </v-icon>
+                        </v-btn>
                     </v-card-actions>
 
                     <v-expand-transition>
                         <div v-show="show" class="my-4">
                             <v-divider></v-divider>
+
                             <v-sheet class="mx-auto" style="max-width: 450px;">
                                 <v-form fast-fail @submit.prevent style="margin-top: 10px;">
-                                    <v-text-field v-model="Persons" label="Cantidad de personas"
-                                        :rules="personsRules"></v-text-field>
-                                    <v-text-field type="date" name="datetime"></v-text-field>
-                                    <v-text-field type="time" name="datetime"></v-text-field>
+                                    <v-row>
+                                        <v-col cols="4">
+                                            <v-text-field v-model="Persons" label="Cant. personas"
+                                                :rules="personsRules"></v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-text-field type="date" name="datetime"></v-text-field>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-text-field type="time" name="datetime"></v-text-field>
+                                        </v-col>
+                                    </v-row>
                                     <v-btn type="submit" block class="mt-2">Submit</v-btn>
                                 </v-form>
                             </v-sheet>
