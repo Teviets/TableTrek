@@ -49,6 +49,18 @@ module.exports = {
             ]
         },
         {
+            test: /\.(woff|ttf|woff2|eot)$/i,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'font/',
+                    }
+                }
+            ]
+        },
+        {
             test: /\.vue$/,
             loader: 'vue-loader'
         }

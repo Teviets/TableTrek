@@ -1,29 +1,61 @@
 <template>
-  <div class="text-center">
+  <v-row justify="center">
     <v-dialog
-      
       v-model="dialog"
-      width="auto"
+      persistent
+      width="1024"
     >
       <template v-slot:activator="{ props }">
         <v-btn
           color="black"
           v-bind="props"
         >
-            <img src="../assets/img/login.png" id="login" />
+          <img src="../assets/img/login.png" alt="">
         </v-btn>
       </template>
-
       <v-card>
+        <v-card-title>
+          <span class="text-h5">Login</span>
+        </v-card-title>
         <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <v-container>
+            <v-col cols="12">
+              <v-text-field
+                label="Usuario"
+                prepend-icon="mdi-account-circle"
+                required
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                label="Password"
+                prepend-icon="mdi-lock"
+                type="password"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-container>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="primary" block @click="dialog = false">Close Dialog</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue-darken-1"
+            variant="text"
+            @click="dialog = false"
+          >
+            Cerrar
+          </v-btn>
+          <v-btn
+            color="blue-darken-1"
+            variant="text"
+            @click="dialog = false"
+          >
+            Login
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>
+  </v-row>
 </template>
 
 <script>
