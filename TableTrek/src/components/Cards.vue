@@ -9,11 +9,11 @@
 
                 <v-col cols="6">
                     <v-card-item>
-                        <v-card-title>Cafe Badilico</v-card-title>
+                        <v-card-title style="font-size: 30px;">Cafe Badilico</v-card-title>
                     </v-card-item>
 
                     <v-card-text>
-                        <div class="my-4 text-subtitle-1">
+                        <div class="my-4 text-subtitle-1" style="margin-top: 0px!important;">
                             $ • Italian, Cafe
                         </div>
 
@@ -30,8 +30,6 @@
                         <v-chip-group v-model="selection">
                             <v-chip>5:30PM</v-chip>
                             <v-chip>7:30PM</v-chip>
-                            <v-chip>8:00PM</v-chip>
-                            <v-chip>9:00PM</v-chip>
                         </v-chip-group>
                     </div>
 
@@ -46,11 +44,12 @@
                     <v-expand-transition>
                         <div v-show="show" class="my-4">
                             <v-divider></v-divider>
-                            <v-sheet class="mx-auto">
-                                <v-form fast-fail @submit.prevent>
+                            <v-sheet class="mx-auto" style="max-width: 450px;">
+                                <v-form fast-fail @submit.prevent style="margin-top: 10px;">
                                     <v-text-field v-model="Persons" label="Cantidad de personas"
                                         :rules="personsRules"></v-text-field>
-                                    <v-text-field type="datetime-local" name="datetime"></v-text-field>
+                                    <v-text-field type="date" name="datetime"></v-text-field>
+                                    <v-text-field type="time" name="datetime"></v-text-field>
                                     <v-btn type="submit" block class="mt-2">Submit</v-btn>
                                 </v-form>
                             </v-sheet>
