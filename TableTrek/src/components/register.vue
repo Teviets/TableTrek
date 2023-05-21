@@ -9,7 +9,7 @@
         color="black"
         v-bind="props"
         >
-        <img src="../assets/img/login.png" alt="">
+            <img src="../assets/vectores/register.svg" height="32" width="32"/>
         </v-btn>
     </template>
     <v-card>
@@ -68,7 +68,7 @@
                             counter
                             label="Description"
                             maxlength="240"
-                            
+                            prepend-icon="mdi-pencil"
                         ></v-textarea>
                     </v-col>
                 </v-row>
@@ -77,17 +77,18 @@
                         cols="12"
                         sm="6">
                         <v-text-field
-                            label="Label Text"
+                            label="Abren a las"
                             model-value="12:30:00"
                             type="time"
                             suffix="PST"
+                            prepend-icon="mdi-clock"
                         ></v-text-field>
                     </v-col>
                     <v-col 
                         cols="12"
                         sm="6">
                         <v-text-field
-                            label="Label Text"
+                            label="Cierran a las"
                             model-value="12:30:00"
                             type="time"
                             suffix="PST"

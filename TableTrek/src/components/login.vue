@@ -97,10 +97,10 @@ export default {
         // Lógica para el login exitoso
         this.isLogged = true;
         console.log('Login exitoso');
-        this.
         this.timeout = setTimeout(() => {
           this.loading = false;
           this.dialog = false;
+          this.$emit('login', this.isLogged);
         }, 2000);
       } else {
         // Lógica para el login fallido

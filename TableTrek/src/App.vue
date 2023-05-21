@@ -5,32 +5,63 @@
         <h1>
           <router-link class="link" to="/">TableTrek</router-link>
         </h1>
-        <div id="routers" v-if="!isLogged">
+        <div id="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas">Pizzas</router-link>
           <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
           <router-link class="link" to="/sushi">Sushi</router-link>
-        </div>
+        </div> 
       </div>
-      <div id="prueba">
-        <Login ref="isLogged"/>
+      <div id="prueba" v-if="!inLogin">
+        <Login @login="login"/>
         <Register/>
+      </div>
+      <div v-if="inLogin">
+        <v-btn
+          color="black"
+          @click="logout"
+        >
+          Logout
+        </v-btn>
       </div>
     </header>
     <router-view></router-view>
   </div>
 </template>
 
-<script setup>
+<script>
 import { useRouter } from 'vue-router';
 import Login from './components/login.vue';
 import Register from './components/register.vue';
-const router = useRouter();
-
+export default {
+  data() {
+    return {
+      inLogin: false
+    }
+  },
+  components: {
+    Login,
+    Register
+  },
+  setup() {
+    const router = useRouter();
+    const isLogged = false;
+    return { router, isLogged };
+  },
+  methods:{
+    login(value){
+      this.inLogin = value;
+    },
+    logout(){
+      this.inLogin = false;
+      location.reload();
+    }
+  }
+}
 
 
 </script>
 
-<style >
+<style>
 #contenedor{
   width: 100%;
   background-color: black;
@@ -91,7 +122,7 @@ const router = useRouter();
   display: flex;
   gap: 30px;
   align-items: center;
-  flex-direction: row-reverse; /* Agregado para mostrar los componentes en una columna */
+  flex-direction: row; /* Agregado para mostrar los componentes en una columna */
 }
 
 
