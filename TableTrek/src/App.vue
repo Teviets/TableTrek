@@ -5,29 +5,98 @@
         <h1>
           <router-link class="link" to="/">TableTrek</router-link>
         </h1>
-        <div id="routers">
+        <div class="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas">Pizzas</router-link>
           <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
           <router-link class="link" to="/sushi">Sushi</router-link>
+        </div> 
+        <div class="routers" v-if="inLogin">
+          <router-link class="link" to="/reservas">Reservas</router-link>
         </div>
       </div>
-      <div id="prueba">
-        <button id="loginButton">
-          <img src="./assets/img/login.png" id="login" />
-        </button>
+      <div id="prueba" v-if="!inLogin">
+        <Login @login="login"/>
+        <Register/>
+      </div>
+      <div v-if="inLogin">
+        <v-btn
+          color="black"
+          @click="logout"
+        >
+          Logout
+        </v-btn>
       </div>
     </header>
     <router-view></router-view>
   </div>
+  <div>
+    <Cards 
+      title="Burger King"
+      categoria="Hambueguesas"
+      description="El mejor restaurante de hamburguesas"
+      apertura="07:30AM"
+      cerrada="10:30PM"
+      image="https://d1ralsognjng37.cloudfront.net/29998691-6cf0-413c-ae62-c35c21a47d0f.jpeg"
+    ></Cards>
+  </div>
+  <div class="cardsContainer">
+    <Cards 
+      title="Castor Pizza"
+      categoria="Pizzas"
+      description="El mejor restaurante de pizzas"
+      apertura="10:30AM"
+      cerrada="8:30PM"
+      image="https://www.guatemala.com/fotos/2021/04/Castors-Pizza-GT-el-restaurante-que-ofrece-pizzas-con-mucho-queso-en-Ciudad-de-Guatemala-885x500.jpg"
+    ></Cards>
+  </div>
+  <div class="cardsContainer">
+    <Cards 
+      title="Sushiito"
+      categoria="Sushi"
+      description="El mejor restaurante de sushi"
+      apertura="09:30AM"
+      cerrada="11:30PM"
+      image="https://www.sushiitto.com.gt/assets/img/products/rollosSushiitto.jpg"
+    ></Cards>
+  </div>
 </template>
 
-<script setup>
+<script>
 import { useRouter } from 'vue-router';
-import Login from './assets/vectores/login.svg';
-const router = useRouter();
+import Login from './components/login.vue';
+import Register from './components/register.vue';
+import Cards from './components/Cards.vue';
+export default {
+  data() {
+    return {
+      inLogin: false
+    }
+  },
+  components: {
+    Login,
+    Register,
+    Cards
+  },
+  setup() {
+    const router = useRouter();
+    const isLogged = false;
+    return { router, isLogged };
+  },
+  methods:{
+    login(value){
+      this.inLogin = value;
+    },
+    logout(){
+      this.router.push('/');
+      this.inLogin = false;
+    }
+  }
+}
+
+
 </script>
 
-<style >
+<style>
 #contenedor{
   width: 100%;
   background-color: black;
@@ -37,7 +106,8 @@ const router = useRouter();
   position: absolute;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 100%;
+  height: 70px;
   background-color: rgb(20, 19, 19);
   color: white;
   display: flex;
@@ -52,7 +122,7 @@ const router = useRouter();
   margin-right: 70px;
 }
 
-#routers{
+.routers{
   display: flex;
   gap: 20px;
   align-items: center;
@@ -64,14 +134,8 @@ const router = useRouter();
   text-decoration: none;
 }
 
-.link:hover{
+.link:hover {
   cursor: pointer;
-}
-
-#login{
-  width: 35px;
-  height: 35px;
-  margin-right: 50px;
 }
 
 #loginButton{
@@ -82,14 +146,27 @@ const router = useRouter();
   align-items: center;
 }
 
-#loginButton:hover{
+#loginButton:hover {
   width: 36px;
   cursor: pointer;
 }
 
-#prueba{
-  width: 35px;
+#prueba {
+  width: auto;
   margin-right: 25px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-direction: row; /* Agregado para mostrar los componentes en una columna */
+}
+
+.cardsContainer {
+  position: relative;
+  margin-top: 18%;
+  margin-bottom: 25%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
 }
 
 </style>
