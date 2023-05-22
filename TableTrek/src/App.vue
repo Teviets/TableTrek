@@ -29,6 +29,36 @@
     </header>
     <router-view></router-view>
   </div>
+  <div id="cardsContainer">
+    <Cards 
+      title="Burger King"
+      categoria="Hambueguesas"
+      description="El mejor restaurante de hamburguesas"
+      apertura="07:30AM"
+      cerrada="10:30PM"
+      image="https://d1ralsognjng37.cloudfront.net/29998691-6cf0-413c-ae62-c35c21a47d0f.jpeg"
+    />
+  </div>
+  <div id="cardsContainer">
+    <Cards 
+      title="Castor Pizza"
+      categoria="Pizzas"
+      description="El mejor restaurante de pizzas"
+      apertura="10:30AM"
+      cerrada="8:30PM"
+      image="https://www.guatemala.com/fotos/2021/04/Castors-Pizza-GT-el-restaurante-que-ofrece-pizzas-con-mucho-queso-en-Ciudad-de-Guatemala-885x500.jpg"
+    />
+  </div>
+  <div id="cardsContainer">
+    <Cards 
+      title="Sushiito"
+      categoria="Sushi"
+      description="El mejor restaurante de sushi"
+      apertura="09:30AM"
+      cerrada="11:30PM"
+      image="https://www.sushiitto.com.gt/assets/img/products/rollosSushiitto.jpg"
+    />
+  </div>
 </template>
 
 <script>
@@ -102,7 +132,7 @@ export default {
   text-decoration: none;
 }
 
-.link:hover{
+.link:hover {
   cursor: pointer;
 }
 
@@ -114,7 +144,7 @@ export default {
   align-items: center;
 }
 
-#loginButton:hover{
+#loginButton:hover {
   width: 36px;
   cursor: pointer;
 }
