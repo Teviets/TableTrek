@@ -3,7 +3,7 @@
     <header id="elHeader">
       <div id="links">
         <h1>
-          TableTrek
+          <router-link class="link" to="/">TableTrek</router-link>
         </h1>
         <div class="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas">Pizzas</router-link>
@@ -29,7 +29,7 @@
     </header>
     <router-view></router-view>
   </div>
-  <div id="cardsContainer">
+  <div>
     <Cards 
       title="Burger King"
       categoria="Hambueguesas"
@@ -37,9 +37,9 @@
       apertura="07:30AM"
       cerrada="10:30PM"
       image="https://d1ralsognjng37.cloudfront.net/29998691-6cf0-413c-ae62-c35c21a47d0f.jpeg"
-    />
+    ></Cards>
   </div>
-  <div id="cardsContainer">
+  <div class="cardsContainer">
     <Cards 
       title="Castor Pizza"
       categoria="Pizzas"
@@ -47,9 +47,9 @@
       apertura="10:30AM"
       cerrada="8:30PM"
       image="https://www.guatemala.com/fotos/2021/04/Castors-Pizza-GT-el-restaurante-que-ofrece-pizzas-con-mucho-queso-en-Ciudad-de-Guatemala-885x500.jpg"
-    />
+    ></Cards>
   </div>
-  <div id="cardsContainer">
+  <div class="cardsContainer">
     <Cards 
       title="Sushiito"
       categoria="Sushi"
@@ -57,7 +57,7 @@
       apertura="09:30AM"
       cerrada="11:30PM"
       image="https://www.sushiitto.com.gt/assets/img/products/rollosSushiitto.jpg"
-    />
+    ></Cards>
   </div>
 </template>
 
@@ -65,6 +65,7 @@
 import { useRouter } from 'vue-router';
 import Login from './components/login.vue';
 import Register from './components/register.vue';
+import Cards from './components/Cards.vue';
 export default {
   data() {
     return {
@@ -73,7 +74,8 @@ export default {
   },
   components: {
     Login,
-    Register
+    Register,
+    Cards
   },
   setup() {
     const router = useRouter();
@@ -158,5 +160,13 @@ export default {
   flex-direction: row; /* Agregado para mostrar los componentes en una columna */
 }
 
+.cardsContainer {
+  position: relative;
+  margin-top: 18%;
+  margin-bottom: 25%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
 
 </style>

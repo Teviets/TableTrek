@@ -18,6 +18,7 @@ import '@mdi/font/css/materialdesignicons.css';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/', component: App},
     { path: '/pizzas', component: Pizzas },
     { path: '/hamburguesas', component: Hamburguesas },
     { path: '/sushi', component: Sushi },
