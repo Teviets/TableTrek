@@ -79,7 +79,10 @@
 <style>
   #contenido {
     position: absolute;
-    top: 50%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   </style>
   
