@@ -21,7 +21,7 @@ const router = createRouter({
     { path: '/pizzas', component: Pizzas },
     { path: '/hamburguesas', component: Hamburguesas },
     { path: '/sushi', component: Sushi },
-    { path: '/reservas', redirect: Reservas }
+    { path: '/reservas', component: Reservas }
   ]
 });
 

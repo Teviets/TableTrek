@@ -132,8 +132,8 @@
   <style>
   
   .custom-button {
-    background-color: black; /* Cambia los valores RGB y el nivel de transparencia según tus necesidades */
-    border: none; /* Elimina el borde si no lo necesitas */
+    background-color: black;
+    border: none; 
   }
   
   

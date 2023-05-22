@@ -55,8 +55,8 @@ export default {
       this.inLogin = value;
     },
     logout(){
+      this.router.push('/');
       this.inLogin = false;
-      location.reload();
     }
   }
 }
