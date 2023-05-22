@@ -29,7 +29,7 @@
     </header>
     <router-view></router-view>
   </div>
-  <div>
+  <div class="cardsContainer">
     <Cards 
       title="Burger King"
       categoria="Hambueguesas"
