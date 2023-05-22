@@ -1,88 +1,86 @@
 <template>
-    <div id="contenido">
-        <v-table>
-            <thead>
-                <tr>
-                    <th class="text-left">
-                        Name
-                    </th>
-                    <th class="text-left">
-                        Calories
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr
-                    v-for="item in desserts"
-                    :key="item.name"
-                >
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.calories }}</td>
-                </tr>
-            </tbody>
-        </v-table>
+    <div id="reservas">
+      <div id="filtro">
+        <v-text-field v-model="search" label="Search"></v-text-field>
+      </div>
+      <v-table>
+        <thead>
+          <tr>
+            <th class="text-left">Nombre</th>
+            <th class="text-left">Fecha</th>
+            <th class="text-left">Hora</th>
+            <th class="text-left">Cantidad de personas</th>
+            <th class="text-left">Borrar reserva</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in filteredTableData" :key="item.name">
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.fecha }}</td>
+            <td>{{ item.hora }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>
+                <v-btn 
+                    icon="mdi-close"
+                    @click="deleteItem(index)"
+                ></v-btn>
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
     </div>
-    
-</template>
+  </template>
   
-<script>
+  <script>
   export default {
-    data () {
+    data() {
       return {
-        desserts: [
+        search: '',
+        reservacion: [
           {
-            name: 'Frozen Yogurt',
-            calories: 159,
+            nombre: 'Pedro',
+            fecha: 159,
+            hora: 100,
+            cantidad: 15
           },
           {
-            name: 'Ice cream sandwich',
-            calories: 237,
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
+            nombre: 'Juan',
+            fecha: 159,
+            hora: 100,
+            cantidad: 15
           },
         ],
-      }
+      };
     },
-  }
-</script>
+    methods:{
+        deleteItem(id){
+            this.reservacion.splice(id,1);
+        }
+    },
+    computed: {
+      filteredTableData() {
+        const query = this.search.toLowerCase();
+        return this.reservacion.filter(
+          item => item.nombre.toLowerCase().includes(query)
+        );
+      },
+    },
+  };
+  </script>
   
-<style>
-  #contenido {
+  <style>
+  #reservas {
     position: absolute;
-    top: 25%;
+    top: 15%;
+    left: 30%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  </style>
+
+  #filtro{
+    width: 70%;
+  }
+</style>
   
