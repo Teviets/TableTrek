@@ -89,7 +89,6 @@ export default {
 <style>
 #contenedor {
   width: 100%;
-  background-color: black;
 }
 
 #elHeader {
