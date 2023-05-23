@@ -3,12 +3,12 @@
     <header id="elHeader">
       <div id="links">
         <h1>
-          TableTrek
+          <router-link class="link" to="/" @click="cambioEstadoHomePage">TableTrek</router-link>
         </h1>
         <div class="routers" v-if="!inLogin">
-          <router-link class="link" to="/pizzas">Pizzas</router-link>
-          <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
-          <router-link class="link" to="/sushi">Sushi</router-link>
+          <router-link class="link" to="/pizzas" @click="cambioEstadoPizza">Pizzas</router-link>
+          <router-link class="link" to="/hamburguesas" @click="cambioEstadoHamburguesa">Hamburguesas</router-link>
+          <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
         </div> 
         <div class="routers" v-if="inLogin">
           <router-link class="link" to="/reservas">Reservas</router-link>
@@ -28,6 +28,9 @@
       </div>
     </header>
     <router-view></router-view>
+    <div id="tiviet" v-if="estado===''">
+      <Carousel />
+    </div>
   </div>
 </template>
 
@@ -36,16 +39,19 @@ import { useRouter } from 'vue-router';
 import Login from './components/login.vue';
 import Register from './components/register.vue';
 import Cards from './components/Cards.vue';
+import Carousel from './components/Carousel.vue';
 export default {
   data() {
     return {
-      inLogin: false
+      inLogin: false,
+      estado: ""
     }
   },
   components: {
     Login,
     Register,
-    Cards
+    Cards,
+    Carousel
   },
   setup() {
     const router = useRouter();
@@ -59,10 +65,25 @@ export default {
     logout(){
       this.router.push('/');
       this.inLogin = false;
+    },
+    cambioEstadoPizza(){
+      this.estado = "pizza";
+      console.log(this.estado);
+    },
+    cambioEstadoHamburguesa(){
+      this.estado = "hamburguesa";
+      console.log(this.estado);
+    },
+    cambioEstadoSushi(){
+      this.estado = "sushi";
+      console.log(this.estado);
+    },
+    cambioEstadoHomePage(){
+      this.estado = "";
+      console.log(this.estado);
     }
   }
 }
-
 
 </script>
 
@@ -137,6 +158,17 @@ export default {
   display: flex;
   justify-content: center;
   align-items:center;
+}
+
+#tiviet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>
