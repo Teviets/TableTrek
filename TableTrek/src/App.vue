@@ -2,8 +2,11 @@
   <div id="contenedor">
     <header id="elHeader">
       <div id="links">
-        <h1>
+        <h1 v-if="!inLogin">
           <router-link class="link" to="/" @click="cambioEstadoHomePage">TableTrek</router-link>
+        </h1>
+        <h1 v-if="inLogin">
+          TableTrek
         </h1>
         <div class="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas" @click="cambioEstadoPizza">Pizzas</router-link>
@@ -25,10 +28,14 @@
       </div>
     </header>
     <router-view></router-view>
-    <div id="tiviet" v-if="estado === ''">
+    <div class="tiviet" v-if="estado === '' && !inLogin">
       <h1>TableTrek</h1>
       <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
       <Carousel />
+    </div>
+    <div id="tivetPrueba" v-if="inLogin">
+      <h1>TableTrek</h1>
+      <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
     </div>
   </div>
 </template>
@@ -159,7 +166,7 @@ export default {
   align-items: center;
 }
 
-#tiviet {
+.tiviet {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -172,13 +179,19 @@ export default {
   gap: 20px;
 }
 
-#tiviet h1 {
+.tiviet h1 {
   font-size: 60px;
   margin-top: 0;
 }
 
-#tiviet p {
+.tiviet p {
   margin-bottom: 0;
 }
 
+
+#tivetPrueba{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 </style>
