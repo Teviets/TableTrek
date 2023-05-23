@@ -3,7 +3,7 @@
     <header id="elHeader">
       <div id="links">
         <h1>
-          <router-link class="link" to="/">TableTrek</router-link>
+          TableTrek
         </h1>
         <div class="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas">Pizzas</router-link>
@@ -28,36 +28,6 @@
       </div>
     </header>
     <router-view></router-view>
-  </div>
-  <div class="cardsContainer">
-    <Cards 
-      title="Burger King"
-      categoria="Hambueguesas"
-      description="El mejor restaurante de hamburguesas"
-      apertura="07:30AM"
-      cerrada="10:30PM"
-      image="https://d1ralsognjng37.cloudfront.net/29998691-6cf0-413c-ae62-c35c21a47d0f.jpeg"
-    ></Cards>
-  </div>
-  <div class="cardsContainer">
-    <Cards 
-      title="Castor Pizza"
-      categoria="Pizzas"
-      description="El mejor restaurante de pizzas"
-      apertura="10:30AM"
-      cerrada="8:30PM"
-      image="https://www.guatemala.com/fotos/2021/04/Castors-Pizza-GT-el-restaurante-que-ofrece-pizzas-con-mucho-queso-en-Ciudad-de-Guatemala-885x500.jpg"
-    ></Cards>
-  </div>
-  <div class="cardsContainer">
-    <Cards 
-      title="Sushiito"
-      categoria="Sushi"
-      description="El mejor restaurante de sushi"
-      apertura="09:30AM"
-      cerrada="11:30PM"
-      image="https://www.sushiitto.com.gt/assets/img/products/rollosSushiitto.jpg"
-    ></Cards>
   </div>
 </template>
 
@@ -162,8 +132,8 @@ export default {
 
 .cardsContainer {
   position: relative;
-  margin-top: 18%;
-  margin-bottom: 25%;
+  margin-top: 19%;
+  margin-bottom: 27%;
   display: flex;
   justify-content: center;
   align-items:center;

@@ -3,8 +3,7 @@
         <v-card class="mx-auto my-12" id="contenedorCards" width="1000px" height=auto>
             <v-row>
                 <v-col cols="6">
-                    <v-img cover width="100%" height="280px"
-                        :src="image"></v-img>
+                    <v-img cover width="100%" height="280px" :src="image"></v-img>
                 </v-col>
 
                 <v-col cols="6">
@@ -45,12 +44,18 @@
                     </v-card-actions>
 
                     <v-expand-transition>
-                        <div v-show="show" class="my-4">
+                        <div v-show="show" class="my-4" style="transform-origin: top;">
                             <v-divider></v-divider>
 
                             <v-sheet class="mx-auto" style="max-width: 450px;">
                                 <v-form fast-fail @submit.prevent style="margin-top: 10px;">
                                     <v-row>
+                                        <v-col cols="8">
+                                            <v-text-field v-model="Name" label="Nombre"
+                                                :rules="nameRules"></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row style="margin-top: -30px;">
                                         <v-col cols="4">
                                             <v-text-field v-model="Persons" label="Cant. personas"
                                                 :rules="personsRules"></v-text-field>
@@ -82,6 +87,8 @@ export default {
     },
     data: () => ({
         show: false,
+        Name: '',
+        Persons: '',
     }),
     props: {
         title: String,
