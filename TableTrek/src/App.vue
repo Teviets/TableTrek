@@ -3,61 +3,33 @@
     <header id="elHeader">
       <div id="links">
         <h1>
-          <router-link class="link" to="/">TableTrek</router-link>
+          <router-link class="link" to="/" @click="cambioEstadoHomePage">TableTrek</router-link>
         </h1>
         <div class="routers" v-if="!inLogin">
-          <router-link class="link" to="/pizzas">Pizzas</router-link>
-          <router-link class="link" to="/hamburguesas">Hamburguesas</router-link>
-          <router-link class="link" to="/sushi">Sushi</router-link>
-        </div> 
+          <router-link class="link" to="/pizzas" @click="cambioEstadoPizza">Pizzas</router-link>
+          <router-link class="link" to="/hamburguesas" @click="cambioEstadoHamburguesa">Hamburguesas</router-link>
+          <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
+        </div>
         <div class="routers" v-if="inLogin">
           <router-link class="link" to="/reservas">Reservas</router-link>
         </div>
       </div>
       <div id="prueba" v-if="!inLogin">
-        <Login @login="login"/>
-        <Register/>
+        <Login @login="login" />
+        <Register />
       </div>
       <div v-if="inLogin">
-        <v-btn
-          color="black"
-          @click="logout"
-        >
+        <v-btn color="black" @click="logout">
           Logout
         </v-btn>
       </div>
     </header>
     <router-view></router-view>
-  </div>
-  <div class="cardsContainer">
-    <Cards 
-      title="Burger King"
-      categoria="Hambueguesas"
-      description="El mejor restaurante de hamburguesas"
-      apertura="07:30AM"
-      cerrada="10:30PM"
-      image="https://d1ralsognjng37.cloudfront.net/29998691-6cf0-413c-ae62-c35c21a47d0f.jpeg"
-    ></Cards>
-  </div>
-  <div class="cardsContainer">
-    <Cards 
-      title="Castor Pizza"
-      categoria="Pizzas"
-      description="El mejor restaurante de pizzas"
-      apertura="10:30AM"
-      cerrada="8:30PM"
-      image="https://www.guatemala.com/fotos/2021/04/Castors-Pizza-GT-el-restaurante-que-ofrece-pizzas-con-mucho-queso-en-Ciudad-de-Guatemala-885x500.jpg"
-    ></Cards>
-  </div>
-  <div class="cardsContainer">
-    <Cards 
-      title="Sushiito"
-      categoria="Sushi"
-      description="El mejor restaurante de sushi"
-      apertura="09:30AM"
-      cerrada="11:30PM"
-      image="https://www.sushiitto.com.gt/assets/img/products/rollosSushiitto.jpg"
-    ></Cards>
+    <div id="tiviet" v-if="estado === ''">
+      <h1>TableTrek</h1>
+      <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
+      <Carousel />
+    </div>
   </div>
 </template>
 
@@ -66,40 +38,57 @@ import { useRouter } from 'vue-router';
 import Login from './components/login.vue';
 import Register from './components/register.vue';
 import Cards from './components/Cards.vue';
+import Carousel from './components/Carousel.vue';
 export default {
   data() {
     return {
-      inLogin: false
+      inLogin: false,
+      estado: ""
     }
   },
   components: {
     Login,
     Register,
-    Cards
+    Cards,
+    Carousel
   },
   setup() {
     const router = useRouter();
     const isLogged = false;
     return { router, isLogged };
   },
-  methods:{
-    login(value){
+  methods: {
+    login(value) {
       this.inLogin = value;
     },
-    logout(){
+    logout() {
       this.router.push('/');
       this.inLogin = false;
+    },
+    cambioEstadoPizza() {
+      this.estado = "pizza";
+      console.log(this.estado);
+    },
+    cambioEstadoHamburguesa() {
+      this.estado = "hamburguesa";
+      console.log(this.estado);
+    },
+    cambioEstadoSushi() {
+      this.estado = "sushi";
+      console.log(this.estado);
+    },
+    cambioEstadoHomePage() {
+      this.estado = "";
+      console.log(this.estado);
     }
   }
 }
 
-
 </script>
 
 <style>
-#contenedor{
+#contenedor {
   width: 100%;
-  background-color: black;
 }
 
 #elHeader {
@@ -122,7 +111,7 @@ export default {
   margin-right: 70px;
 }
 
-.routers{
+.routers {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -138,7 +127,7 @@ export default {
   cursor: pointer;
 }
 
-#loginButton{
+#loginButton {
   background-color: transparent;
   border: none;
   width: 36px;
@@ -157,16 +146,39 @@ export default {
   display: flex;
   gap: 30px;
   align-items: center;
-  flex-direction: row; /* Agregado para mostrar los componentes en una columna */
+  flex-direction: row;
+  /* Agregado para mostrar los componentes en una columna */
 }
 
 .cardsContainer {
   position: relative;
-  margin-top: 18%;
-  margin-bottom: 25%;
+  margin-top: 19%;
+  margin-bottom: 27%;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
+}
+
+#tiviet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#tiviet h1 {
+  font-size: 60px;
+  margin-top: 0;
+}
+
+#tiviet p {
+  margin-bottom: 0;
 }
 
 </style>
