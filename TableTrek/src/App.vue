@@ -9,26 +9,25 @@
           <router-link class="link" to="/pizzas" @click="cambioEstadoPizza">Pizzas</router-link>
           <router-link class="link" to="/hamburguesas" @click="cambioEstadoHamburguesa">Hamburguesas</router-link>
           <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
-        </div> 
+        </div>
         <div class="routers" v-if="inLogin">
           <router-link class="link" to="/reservas">Reservas</router-link>
         </div>
       </div>
       <div id="prueba" v-if="!inLogin">
-        <Login @login="login"/>
-        <Register/>
+        <Login @login="login" />
+        <Register />
       </div>
       <div v-if="inLogin">
-        <v-btn
-          color="black"
-          @click="logout"
-        >
+        <v-btn color="black" @click="logout">
           Logout
         </v-btn>
       </div>
     </header>
     <router-view></router-view>
-    <div id="tiviet" v-if="estado===''">
+    <div id="tiviet" v-if="estado === ''">
+      <h1>TableTrek</h1>
+      <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
       <Carousel />
     </div>
   </div>
@@ -58,27 +57,27 @@ export default {
     const isLogged = false;
     return { router, isLogged };
   },
-  methods:{
-    login(value){
+  methods: {
+    login(value) {
       this.inLogin = value;
     },
-    logout(){
+    logout() {
       this.router.push('/');
       this.inLogin = false;
     },
-    cambioEstadoPizza(){
+    cambioEstadoPizza() {
       this.estado = "pizza";
       console.log(this.estado);
     },
-    cambioEstadoHamburguesa(){
+    cambioEstadoHamburguesa() {
       this.estado = "hamburguesa";
       console.log(this.estado);
     },
-    cambioEstadoSushi(){
+    cambioEstadoSushi() {
       this.estado = "sushi";
       console.log(this.estado);
     },
-    cambioEstadoHomePage(){
+    cambioEstadoHomePage() {
       this.estado = "";
       console.log(this.estado);
     }
@@ -88,7 +87,7 @@ export default {
 </script>
 
 <style>
-#contenedor{
+#contenedor {
   width: 100%;
   background-color: black;
 }
@@ -113,7 +112,7 @@ export default {
   margin-right: 70px;
 }
 
-.routers{
+.routers {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -129,7 +128,7 @@ export default {
   cursor: pointer;
 }
 
-#loginButton{
+#loginButton {
   background-color: transparent;
   border: none;
   width: 36px;
@@ -148,7 +147,8 @@ export default {
   display: flex;
   gap: 30px;
   align-items: center;
-  flex-direction: row; /* Agregado para mostrar los componentes en una columna */
+  flex-direction: row;
+  /* Agregado para mostrar los componentes en una columna */
 }
 
 .cardsContainer {
@@ -157,7 +157,7 @@ export default {
   margin-bottom: 27%;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
 #tiviet {
@@ -167,8 +167,19 @@ export default {
   transform: translate(-50%, -50%);
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#tiviet h1 {
+  font-size: 60px;
+  margin-top: 0;
+}
+
+#tiviet p {
+  margin-bottom: 0;
 }
 
 </style>
