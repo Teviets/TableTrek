@@ -10,6 +10,7 @@
         :apertura="restaurante.hora_apertura"
         :cerrada="restaurante.hora_cerrada"
         :image="restaurante.imagen"
+        :cardId="restaurante.id_restaurante"
       />
     </div>
   </div>
@@ -34,7 +35,6 @@ onMounted(async () => {
   }
 })
 </script>
-
 
 <style>
 .cardsContainer {

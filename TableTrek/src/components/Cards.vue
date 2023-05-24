@@ -51,8 +51,7 @@
                                 <v-form fast-fail @submit.prevent style="margin-top: 10px;">
                                     <v-row>
                                         <v-col cols="8">
-                                            <v-text-field v-model="Name" label="Nombre"
-                                                :rules="nameRules"></v-text-field>
+                                            <v-text-field v-model="Name" label="Nombre" :rules="nameRules"></v-text-field>
                                         </v-col>
                                     </v-row>
                                     <v-row style="margin-top: -30px;">
@@ -61,13 +60,13 @@
                                                 :rules="personsRules"></v-text-field>
                                         </v-col>
                                         <v-col cols="4">
-                                            <v-text-field type="date" name="datetime"></v-text-field>
+                                            <v-text-field v-model="Fecha" type="date" name="datetime"></v-text-field>
                                         </v-col>
                                         <v-col cols="4">
-                                            <v-text-field type="time" name="datetime"></v-text-field>
+                                            <v-text-field v-model="Hora" type="time" name="datetime"></v-text-field>
                                         </v-col>
                                     </v-row>
-                                    <v-btn type="submit" block class="mt-2">Submit</v-btn>
+                                    <v-btn type="submit" block class="mt-2" @click="reservar">Reserve</v-btn>
                                 </v-form>
                             </v-sheet>
                         </div>
@@ -89,6 +88,8 @@ export default {
         show: false,
         Name: '',
         Persons: '',
+        Fecha: '',
+        Hora: '',
     }),
     props: {
         title: String,
@@ -97,6 +98,36 @@ export default {
         apertura: String,
         cerrada: String,
         image: String,
+        cardId: String,
+    },
+    methods: {
+        reservar() {
+            const data = {
+                id_restaurante: this.cardId,
+                cliente: this.Name,
+                hora: this.Hora,
+                fecha_reserva: this.Fecha,
+                cant_personas: this.Persons,
+
+            };
+            fetch('http://localhost:3070/reservaciones', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log('Reservación exitosa');
+                    } else {
+                        console.log('Error al reservar:', response.statusText);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error al reservar:', error);
+                });
+        },
     },
 }
 </script>
