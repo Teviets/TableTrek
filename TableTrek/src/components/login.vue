@@ -73,10 +73,12 @@ export default {
               // Lógica para el login exitoso
               this.isLogged = true;
               console.log('Login exitoso');
+              const restauranteId = user.id_restaurante;
               this.timeout = setTimeout(() => {
                 this.loading = false;
                 this.dialog = false;
-                this.$emit('login', this.isLogged);
+                this.$emit('login', restauranteId);
+                console.log(restauranteId);
               }, 2000);
             } else {
               // Lógica para el login fallido

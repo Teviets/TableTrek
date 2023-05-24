@@ -14,7 +14,7 @@
           <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
         </div>
         <div class="routers" v-if="inLogin">
-          <router-link class="link" to="/reservas">Reservas</router-link>
+          <router-link class="link" to="/reservas" :restaurante-id="restauranteId">Reservas</router-link>
         </div>
       </div>
       <div id="prueba" v-if="!inLogin">
@@ -46,18 +46,21 @@ import Login from './components/login.vue';
 import Register from './components/register.vue';
 import Cards from './components/Cards.vue';
 import Carousel from './components/Carousel.vue';
+import Reservas from './reservas.vue';
 export default {
   data() {
     return {
       inLogin: false,
-      estado: ""
+      estado: "",
+      restauranteId: null
     }
   },
   components: {
     Login,
     Register,
     Cards,
-    Carousel
+    Carousel,
+    Reservas
   },
   setup() {
     const router = useRouter();
@@ -65,6 +68,11 @@ export default {
     return { router, isLogged };
   },
   methods: {
+    login(restauranteId) { // Modificar aquí
+      this.inLogin = true;
+      this.restauranteId = restauranteId;
+    },
+
     login(value) {
       this.inLogin = value;
     },
@@ -189,7 +197,7 @@ export default {
 }
 
 
-#tivetPrueba{
+#tivetPrueba {
   position: absolute;
   top: 50%;
   left: 50%;
