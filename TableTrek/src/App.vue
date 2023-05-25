@@ -176,8 +176,8 @@ export default {
 
 .tiviet {
   position: absolute;
-  top: 450px;
-  left: 550px;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   display: flex;
