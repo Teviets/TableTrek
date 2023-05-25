@@ -1,6 +1,6 @@
 # TableTrek
 
-<img src="./tabletrek/src/assets/img/tabletrek.png" style="position:absolute; left:50%;"/>
+<img src="./TableTrek/src/assets/img/tabletrek.png" style="position:absolute; left:50%;"/>
 
 ## Link de Firebase:
 
