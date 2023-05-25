@@ -95,6 +95,15 @@
                         ></v-text-field>
                     </v-col>
                 </v-row>
+                <v-row>
+                    <v-col>
+                        <v-file-input
+                            label="File input"
+                            variant="filled"
+                            prepend-icon="mdi-camera"
+                    ></v-file-input>
+                    </v-col>
+                </v-row>
             </v-container>
         </v-card-text>
         <v-card-actions>
