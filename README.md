@@ -101,3 +101,99 @@ reservar() {
         });
 },
   ```
+
+### Codigo general de componente en Vue
+
+'''
+<template>
+  <!--
+    Estructura visual del component
+  -->
+</template>
+
+<script>
+// Importacion de componentes o dependencias
+export default {
+  data() {
+    return {
+      // Variables a utilizar en en el template
+    }
+  },
+  components: {
+    // Componentes a utilizar en el template
+  },
+  setup() {
+    const router = useRouter();
+    const isLogged = false;
+    return { router, isLogged };
+  },
+  methods: {
+    // Metodos a utlizar en template
+  },
+  props:{
+    // Propiedades que requiere el componente
+  }
+  onMounted(){
+    // Al montar el DOM
+  }
+  beforeDestroy(){
+    // Lo que sucedera al cerrar el DOM
+  }
+}
+
+</script>
+
+<style>
+    /**
+      Aplicar estilos aqui
+    */
+</style>
+'''
+
+
+### Como llamar el componente de vue a un JS
+
+'''
+import './assets/main.css';
+
+import { createApp } from 'vue';
+import { createRouter, createWebHistory } from 'vue-router';
+
+//Importar componentes para el router
+import App from './src/App.vue'
+
+// Importa dependencias necesarias
+
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    // Se coloca el path que se desea y el componente al que se debe dirigir el path
+    { path: '/', component: App},
+  ]
+});
+
+// Crea una instancia de Vuetify
+const vuetify = createVuetify();
+
+// Creacion de App que utilice nuestro componente principal y nuestro router
+createApp(App).use(router).use(vuetify).mount('#app');
+'''
+
+### Estructura del Index.html
+'''
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/food-outline.png">
+    <title>TableTrek</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+'''
