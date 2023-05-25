@@ -2,6 +2,10 @@
 
 <img src="./TableTrek.png" style="position:absolute; left:50%;"/>
 
+## Descripcion de proyecto
+
+Este proyecto tiene el proposito de servir tanto a restaurantes como a consumidores. A los consumidores les permite generar reservaciones en sus restaurantes favoritos y a los restaurantes les permite el manejo de sus reservaciones.
+
 ## Link de Firebase:
 
 https://proyectostw2-d92ba.web.app/
