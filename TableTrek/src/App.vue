@@ -14,9 +14,9 @@
           <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
         </div>
       </div>
-      <div id="prueba" v-if="!inLogin">
+      <div id="prueba" v-if="!inLogin && estado === ''">
         <Login @login="login" />
-        <Register />
+        <!--<Register />-->
       </div>
       <div v-if="inLogin">
         <v-btn color="black" @click="logout">
@@ -27,8 +27,7 @@
     <router-view></router-view>
     <div class="tiviet" v-if="estado === '' && !inLogin">
       <h1>TableTrek</h1>
-      <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
-      <Carousel />
+      
     </div>
     <div class="routers" v-if="inLogin">
       <!-- <router-link class="link" to="/reservas" :restauranteId="restauranteId">Reservas</router-link> -->
@@ -73,6 +72,7 @@ export default {
   methods: {
     login(value) {
       this.inLogin = value;
+      this.router.push('/');
     },
     login(restauranteId) {
       this.inLogin = true;
@@ -179,7 +179,7 @@ export default {
 
 .tiviet {
   position: absolute;
-  top: 50%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
