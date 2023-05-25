@@ -58,7 +58,24 @@ export default {
         });
     },
     deleteItem(id) {
-      this.reservaciones.splice(id, 1);
+      const reservaId = this.reservaciones[id].id_reserva; // Obtener el ID de la reserva
+      fetch(`http://localhost:3070/reservaciones/${reservaId}`, {
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.ok) {
+            // Eliminación exitosa, puedes realizar cualquier otra acción necesaria
+            console.log(`Reserva ${reservaId} eliminada correctamente`);
+          } else {
+            // Manejar el error en caso de que la eliminación no sea exitosa
+            console.error('Error al eliminar la reserva');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+      this.reservaciones.splice(id, 1); // Eliminar la reserva del arreglo local
     }
   },
   computed: {

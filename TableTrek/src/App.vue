@@ -205,4 +205,20 @@ export default {
   top: 50%;
   left: 50%;
 }
+
+@media (min-width: 300px) and (max-width: 768px) {
+  #prueba{
+    display: none;
+    
+  }
+  #links{
+    font-size: small;
+  }
+}
+
+@media (min-width: 1180px){
+  #tiviet{
+    margin-top: 25%;
+  }
+}
 </style>
