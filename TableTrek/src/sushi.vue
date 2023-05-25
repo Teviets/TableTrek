@@ -23,7 +23,7 @@ const restaurantes = ref([])
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:3070/restaurantes/3')
+    const response = await fetch('http://3.22.74.121:3070/restaurantes/3')
     const data = await response.json()
 
     restaurantes.value = data.map(restaurante => ({

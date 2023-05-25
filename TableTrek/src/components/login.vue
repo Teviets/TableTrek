@@ -65,7 +65,7 @@ export default {
       this.fetchData();
     },
     fetchData() {
-      fetch('http://localhost:3070/restaurantes/raw')
+      fetch('http://3.22.74.121:3070/restaurantes/raw')
         .then(response => response.json())
         .then(apiData => {
           apiData.forEach(user => {

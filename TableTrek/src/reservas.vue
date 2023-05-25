@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     fetchReservaciones() {
-      fetch(`http://localhost:3070/reservaciones/${this.restauranteId}`)
+      fetch(`http://3.22.74.121:3070/reservaciones/${this.restauranteId}`)
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -59,7 +59,7 @@ export default {
     },
     deleteItem(id) {
       const reservaId = this.reservaciones[id].id_reserva; // Obtener el ID de la reserva
-      fetch(`http://localhost:3070/reservaciones/${reservaId}`, {
+      fetch(`http://3.22.74.121:3070/reservaciones/${reservaId}`, {
         method: 'DELETE'
       })
         .then(response => {

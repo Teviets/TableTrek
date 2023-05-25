@@ -108,7 +108,7 @@
           fecha_reserva: this.Fecha,
           cant_personas: this.Persons,
         };
-        fetch('http://localhost:3070/reservaciones', {
+        fetch('http://3.22.74.121:3070/reservaciones', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

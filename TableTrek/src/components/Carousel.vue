@@ -13,7 +13,7 @@ const carouselImages = ref([])
 
 onMounted(async () => {
     try {
-        const response = await fetch('http://localhost:3070/restaurantes')
+        const response = await fetch('http://3.22.74.121:3070/restaurantes')
         const data = await response.json()
 
         const firstGroup = data.slice(0, 15)

@@ -165,7 +165,7 @@
                 }
                 const img = this.file;
                 
-                fetch('http://localhost:3070/restaurantes',{
+                fetch('http://3.22.74.121:3070/restaurantes',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -189,7 +189,7 @@
                     cant_personas: this.Persons,
 
                 };
-                fetch('http://localhost:3070/reservaciones', {
+                fetch('http://3.22.74.121:3070/reservaciones', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -216,7 +216,7 @@
                 console.log('File: ', this.file);
             },
             cargarImagenPorId(id, file) {
-                const url = 'http://localhost:3070/archivo/' + id;
+                const url = 'http://3.22.74.121:3070/archivo/' + id;
                 const formData = new FormData();
                 formData.append('myFile', file);
 
