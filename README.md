@@ -9,11 +9,15 @@ Este proyecto tiene el proposito de servir tanto a restaurantes como a consumido
 
 ## Link de Firebase:
 
-https://proyectostw2-d92ba.web.app/
+https://tabletrek-47807.web.app/
 
 ## Link repositorio API:
 
 https://github.com/Jskenpo/API_PROYECTO2_STW
+
+## Link documentación:
+
+https://docs.google.com/document/d/1EcvTSXDJjTRMK4Y5Fup-uqrfCwzS0xfSW0_k-yxZKM4/edit?usp=sharing
 
 ## Tecnologias utilizadas
 
