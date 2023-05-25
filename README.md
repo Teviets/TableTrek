@@ -34,6 +34,14 @@ https://github.com/Jskenpo/API_PROYECTO2_STW
 ---`main.js`
 --index.html`
 
+- `TableTreck` carpeta donde se encuentra la configuracion (package.json, webpack)
+- - `src` carpeta donde se encuentra los archivos .vue .js y .css
+- - - `assets` carpeta donde se encuentran las fuentes, imagenes y vectores
+- - - `componentes` carpeta donde se encuentran los componentes del proyecto
+- - - `App.vue` archivo donde se reciben los componentes del proyecto
+- - - `main.js` archivo donde se realiza la navegación de la página
+- - `index.html` archivo donde se recibe el script de la página
+
 ### Navegacion
 
  ```
