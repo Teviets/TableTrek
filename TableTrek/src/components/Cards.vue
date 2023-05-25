@@ -108,7 +108,6 @@ export default {
                 hora: this.Hora,
                 fecha_reserva: this.Fecha,
                 cant_personas: this.Persons,
-
             };
             fetch('http://localhost:3070/reservaciones', {
                 method: 'POST',
@@ -120,6 +119,10 @@ export default {
                 .then((response) => {
                     if (response.ok) {
                         console.log('Reservación exitosa');
+                        this.Name = '';
+                        this.Persons = '';
+                        this.Fecha = '';
+                        this.Hora = '';
                     } else {
                         console.log('Error al reservar:', response.statusText);
                     }
@@ -129,6 +132,7 @@ export default {
                 });
         },
     },
+
 }
 </script>
 

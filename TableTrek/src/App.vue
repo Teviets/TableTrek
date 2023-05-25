@@ -13,9 +13,6 @@
           <router-link class="link" to="/hamburguesas" @click="cambioEstadoHamburguesa">Hamburguesas</router-link>
           <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
         </div>
-        <div class="routers" v-if="inLogin">
-          <router-link class="link" to="/reservas" :restaurante-id="restauranteId">Reservas</router-link>
-        </div>
       </div>
       <div id="prueba" v-if="!inLogin">
         <Login @login="login" />
@@ -33,9 +30,15 @@
       <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
       <Carousel />
     </div>
+    <div class="routers" v-if="inLogin">
+      <!-- <router-link class="link" to="/reservas" :restauranteId="restauranteId">Reservas</router-link> -->
+      <Reservas :restauranteId="restauranteId" />
+    </div>
     <div id="tivetPrueba" v-if="inLogin">
+      <!--
       <h1>TableTrek</h1>
       <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
+      -->
     </div>
   </div>
 </template>
@@ -68,13 +71,13 @@ export default {
     return { router, isLogged };
   },
   methods: {
-    login(restauranteId) { // Modificar aquí
-      this.inLogin = true;
-      this.restauranteId = restauranteId;
-    },
-
     login(value) {
       this.inLogin = value;
+    },
+    login(restauranteId) {
+      this.inLogin = true;
+      this.restauranteId = restauranteId;
+      console.log(this.restauranteId);
     },
     logout() {
       this.router.push('/');
