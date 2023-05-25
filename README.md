@@ -1,4 +1,7 @@
 # TableTrek
+
+<img src="./tabletrek/src/assets/img/tabletrek.png" style="position:absolute; left:50%;"/>
+
 ## Link de Firebase:
 
 https://proyectostw2-d92ba.web.app/
