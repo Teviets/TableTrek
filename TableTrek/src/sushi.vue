@@ -1,15 +1,16 @@
 <template>
   <div class="cardsContainer">
     <div class="cardsWrapper">
-      <Cards
-        v-for="restaurante in restaurantes"
-        :key="restaurante.id_restaurante"
+      <Cards 
+        v-for="restaurante in restaurantes" 
+        :key="restaurante.id_restaurante" 
         :title="restaurante.nombre_restaurante"
-        :categoria="restaurante.categoria"
-        :description="restaurante.descripcion"
+        :categoria="restaurante.categoria" 
+        :description="restaurante.descripcion" 
         :apertura="restaurante.hora_apertura"
-        :cerrada="restaurante.hora_cerrada"
-        :image="restaurante.imagen"
+        :cerrada="restaurante.hora_cerrada" 
+        :image="restaurante.imagen" 
+        :cardId="restaurante.id_restaurante"
       />
     </div>
   </div>

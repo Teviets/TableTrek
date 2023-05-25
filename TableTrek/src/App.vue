@@ -2,8 +2,11 @@
   <div id="contenedor">
     <header id="elHeader">
       <div id="links">
-        <h1>
+        <h1 v-if="!inLogin">
           <router-link class="link" to="/" @click="cambioEstadoHomePage">TableTrek</router-link>
+        </h1>
+        <h1 v-if="inLogin">
+          TableTrek
         </h1>
         <div class="routers" v-if="!inLogin">
           <router-link class="link" to="/pizzas" @click="cambioEstadoPizza">Pizzas</router-link>
@@ -11,7 +14,7 @@
           <router-link class="link" to="/sushi" @click="cambioEstadoSushi">Sushi</router-link>
         </div>
         <div class="routers" v-if="inLogin">
-          <router-link class="link" to="/reservas">Reservas</router-link>
+          <router-link class="link" to="/reservas" :restaurante-id="restauranteId">Reservas</router-link>
         </div>
       </div>
       <div id="prueba" v-if="!inLogin">
@@ -25,10 +28,14 @@
       </div>
     </header>
     <router-view></router-view>
-    <div id="tiviet" v-if="estado === ''">
+    <div class="tiviet" v-if="estado === '' && !inLogin">
       <h1>TableTrek</h1>
       <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
       <Carousel />
+    </div>
+    <div id="tivetPrueba" v-if="inLogin">
+      <h1>TableTrek</h1>
+      <h2>Reserva tu mesa en los mejores restaurantes de la ciudad</h2>
     </div>
   </div>
 </template>
@@ -39,18 +46,21 @@ import Login from './components/login.vue';
 import Register from './components/register.vue';
 import Cards from './components/Cards.vue';
 import Carousel from './components/Carousel.vue';
+import Reservas from './reservas.vue';
 export default {
   data() {
     return {
       inLogin: false,
-      estado: ""
+      estado: "",
+      restauranteId: null
     }
   },
   components: {
     Login,
     Register,
     Cards,
-    Carousel
+    Carousel,
+    Reservas
   },
   setup() {
     const router = useRouter();
@@ -58,6 +68,11 @@ export default {
     return { router, isLogged };
   },
   methods: {
+    login(restauranteId) { // Modificar aquí
+      this.inLogin = true;
+      this.restauranteId = restauranteId;
+    },
+
     login(value) {
       this.inLogin = value;
     },
@@ -159,7 +174,7 @@ export default {
   align-items: center;
 }
 
-#tiviet {
+.tiviet {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -172,13 +187,19 @@ export default {
   gap: 20px;
 }
 
-#tiviet h1 {
+.tiviet h1 {
   font-size: 60px;
   margin-top: 0;
 }
 
-#tiviet p {
+.tiviet p {
   margin-bottom: 0;
 }
 
+
+#tivetPrueba {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 </style>
