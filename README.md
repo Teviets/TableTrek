@@ -1,6 +1,7 @@
 # TableTrek
-
-<img src="./TableTrek.png" style="position:absolute; left:50%;"/>
+<p align="center">
+  <img src="./TableTrek.png" style="position:absolute; left:50%;"/>
+</p>
 
 ## Descripcion de proyecto
 
