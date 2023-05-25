@@ -1,7 +1,7 @@
 # TableTrek
 ## Link de Firebase:
 
-https://proyecto-2-stw.web.app/app
+https://proyectostw2-d92ba.web.app/
 
 ## Tecnologias utilizadas
 
@@ -20,19 +20,20 @@ https://proyecto-2-stw.web.app/app
 ## Estructura
 
 -`TableTreck`
---`src`
-  - `assets`
-    - `fonts`
-    - `images`
-    - `vectores`
-  - `components`
-  - `App.vue`
-  - `main.js`
-- `index.html`
+  -`src`
+    - `assets`
+      - `fonts`
+      - `images`
+      - `vectores`
+    - `components`
+    - `App.vue`
+    - `main.js`
+  - `index.html`
 
 ### Navegacion
 
- ```const router = createRouter({
+ ```
+const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: App},
