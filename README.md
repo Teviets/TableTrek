@@ -3,6 +3,10 @@
 
 https://proyectostw2-d92ba.web.app/
 
+## Link repositorio API:
+
+https://github.com/Jskenpo/API_PROYECTO2_STW
+
 ## Tecnologias utilizadas
 
 - **Vue** — v3.3.4
@@ -20,15 +24,15 @@ https://proyectostw2-d92ba.web.app/
 ## Estructura
 
 -`TableTreck`
-  -`src`
-    - `assets`
-      - `fonts`
-      - `images`
-      - `vectores`
-    - `components`
-    - `App.vue`
-    - `main.js`
-  - `index.html`
+--`src`
+---`assets`
+----`fonts`
+----`images`
+----`vectores`
+---`components`
+---`App.vue`
+---`main.js`
+--index.html`
 
 ### Navegacion
 
@@ -43,4 +47,60 @@ const router = createRouter({
     { path: '/reservas', component: Reservas }
   ]
 });
+  ```
+
+### Obtener datos de API
+
+```
+import { ref, onMounted } from 'vue'
+const restaurantes = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://localhost:3070/restaurantes/1')
+    const data = await response.json()
+
+    restaurantes.value = data.map(restaurante => ({
+      ...restaurante,
+      imagen: `data:image/png;base64,${restaurante.imagen}`
+    }))
+  } catch (error) {
+    console.error(error)
+  }
+})
+  ```
+
+### Enviar datos a la API
+
+```
+reservar() {
+    const data = {
+        id_restaurante: this.cardId,
+        cliente: this.Name,
+        hora: this.Hora,
+        fecha_reserva: this.Fecha,
+        cant_personas: this.Persons,
+    };
+    fetch('http://localhost:3070/reservaciones', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then((response) => {
+            if (response.ok) {
+                console.log('Reservación exitosa');
+                this.Name = '';
+                this.Persons = '';
+                this.Fecha = '';
+                this.Hora = '';
+            } else {
+                console.log('Error al reservar:', response.statusText);
+            }
+        })
+        .catch((error) => {
+            console.error('Error al reservar:', error);
+        });
+},
   ```
