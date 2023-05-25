@@ -104,7 +104,7 @@ reservar() {
 
 ### Codigo general de componente en Vue
 
-'''
+```
 <template>
   <!--
     Estructura visual del component
@@ -148,12 +148,12 @@ export default {
       Aplicar estilos aqui
     */
 </style>
-'''
+```
 
 
 ### Como llamar el componente de vue a un JS
 
-'''
+```
 import './assets/main.css';
 
 import { createApp } from 'vue';
@@ -178,10 +178,10 @@ const vuetify = createVuetify();
 
 // Creacion de App que utilice nuestro componente principal y nuestro router
 createApp(App).use(router).use(vuetify).mount('#app');
-'''
+```
 
 ### Estructura del Index.html
-'''
+```
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -196,4 +196,4 @@ createApp(App).use(router).use(vuetify).mount('#app');
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-'''
+```
