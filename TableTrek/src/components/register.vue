@@ -161,9 +161,9 @@
                     name: this.nombreRestaurante,
                     descrip: this.description,
                     op: this.abren,
-                    cie: this.cierran,
-                    img: this.img
+                    cie: this.cierran
                 }
+                const img = this.file;
                 
                 fetch('http://localhost:3070/restaurantes',{
                     method: 'POST',
@@ -180,6 +180,32 @@
                 }).catch((error) =>{
                     console.error('Error al registrarse: ', error)
                 })
+
+                const restaurantes = {
+                    id_restaurante: this.cardId,
+                    cliente: this.Name,
+                    hora: this.Hora,
+                    fecha_reserva: this.Fecha,
+                    cant_personas: this.Persons,
+
+                };
+                fetch('http://localhost:3070/reservaciones', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(restaurantes),
+                })
+                    .then((response) => {
+                        if (response.ok) {
+                            console.log('Reservación exitosa');
+                        } else {
+                            console.log('Error al reservar:', response.statusText);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error al reservar:', error);
+                    });
                 console.log('Usuario:', this.usuario);
                 console.log('Contraseña:', this.password);
                 console.log('Confirmar contraseña:', this.confirmPassword);
@@ -188,6 +214,26 @@
                 console.log('Abren a las:', this.abren);
                 console.log('Cierran a las:', this.cierran);
                 console.log('File: ', this.file);
+            },
+            cargarImagenPorId(id, file) {
+                const url = 'http://localhost:3070/archivo/' + id;
+                const formData = new FormData();
+                formData.append('myFile', file);
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                    console.log('Respuesta del servidor:', data);
+                    alert('Imagen cargada correctamente.');
+                    })
+                    .catch(error => {
+                    console.error('Error al cargar la imagen:', error);
+                    alert('Error al cargar la imagen.');
+                    });
+
             }
         }
     }
