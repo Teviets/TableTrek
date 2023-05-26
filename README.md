@@ -7,9 +7,9 @@
 
 Este proyecto tiene el proposito de servir tanto a restaurantes como a consumidores. A los consumidores les permite generar reservaciones en sus restaurantes favoritos y a los restaurantes les permite el manejo de sus reservaciones.
 
-## Link de Firebase:
+## direccion IP EC2:
 
-https://tabletrek-47807.web.app/
+http://18.220.61.52/
 
 ## Link repositorio API:
 
